@@ -31,7 +31,6 @@ for i in range(5):
         return print(f"The computer choiced:-{computer_choice}",'You lost!')
     def is_win(player, opponent):
     # return true if player wins
-    # r > s, s > w, w > g
         if (player == 's' and opponent == 'w') or (player == 'w' and opponent == 'g') or (player == 'g' and opponent == 's'):
             return True
         else:
