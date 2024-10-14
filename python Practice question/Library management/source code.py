@@ -47,6 +47,7 @@ class library:
             print("The Book is Available")
         else:
             print("Sorry! The book is not available")
+l = library()
 print("Welcome to XYZ Library")
 print("1 to add book")
 print("2 to borrow book")
@@ -55,16 +56,14 @@ print("4 to check any book available or not")
 a = int(input("Enter Your choice:-"))
 match a :
     case 1 :
-        l = library()
         l.add_books()
     case 2 :
-        l = library()
         l.borrow_book()
     case 3 :
-        l = library()
+
         l.return_book()
     case 4 :
-        l = library()
+
         l.check()
     case _ :
         raise ValueError("You have entered a invalid Option")
