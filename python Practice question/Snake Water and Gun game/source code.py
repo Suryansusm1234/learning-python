@@ -5,8 +5,12 @@ count =0
 tie = 0
 lost = 0
 for i in range(5):
+    user = input("What's your choice? 's' for snake, 'w' for water, 'g' for gun or (q) to quit:  ").lower()
+    if user == 'q':
+        print("Thanks for playing")
+        break
     def play():
-        user = input("What's your choice? 's' for snake, 'w' for water, 'g' for gun:  ").lower()
+        global user
         if user not in ["s", "w", "g"]:
             raise ValueError("Invalid input. Please enter 's', 'w', or 'g'.")
         computer_choice = random.choice(computer).lower()
