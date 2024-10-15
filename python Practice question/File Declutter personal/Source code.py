@@ -1,8 +1,9 @@
 import os
 directory ='E:\. photos'
 def filerename(file_name,i):
+    Username= input("Enter the name You want to rename each file with:- ")
     name, extension = os.path.splitext(file_name)
-    file_name = f'su{i}{extension}'
+    file_name = f's{Username}{i}{extension}'
     return file_name
                            
 def open(directory):
