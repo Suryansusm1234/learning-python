@@ -19,7 +19,7 @@ def headline(category=None):
 def displaynews(articles):
     for i,article in enumerate(articles, start=1):
         print(f"Headline {i} : {article['title']}")
-        print(f"content      : {article["content"]}")
+        print(f"content      : {article['content']}")
         print(f"Description  : {article['description']}")
         print(f"URL          : {article['url']}")
         print(f"Source       : {article['source']['name']}")
