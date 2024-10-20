@@ -1,15 +1,13 @@
 import requests
 import time 
-url ="https://newsapi.org/v2/top-headlines"
-headers = {
-    'Authorization': 'f29c307400b347d2a21fd429205f1f60'  # Replace with your actual API key
-}
-def headline(contrycode = 'us',category=None):
-    Param=  {'country':contrycode,'pageSize': 5  }
-    if category!=None:
-        Param['category']=category
+def headline(category=None):
+    Param=  {'pageSize': 5  }
     
-    response= requests.get(url, headers=headers, params=Param)
+    if category!=None:
+        url =f"https://newsapi.org/v2/everything?q={category}&from=2024-09-20&sortBy=publishedAt&apiKey=f29c307400b347d2a21fd429205f1f60"
+    else:
+        url = "https://newsapi.org/v2/top-headlines?country=us&from=2024-09-20&sortBy=publishedAt&apiKey=f29c307400b347d2a21fd429205f1f60"
+    response= requests.get(url)
     if response.status_code==200:
         data = response.json()
         articles = data['articles']
@@ -27,70 +25,11 @@ def displaynews(articles):
         print(f"Source       : {article['source']['name']}")
         print(f"Published at : {article['publishedAt']}")
         print(f"URL          : {article['url']}\n")
-        time.sleep(4)
+        time.sleep(2)
 def runmain():
     print("Welcome to News For all We provide valid news according to Your Request")
-    country_name = input("Enter the contry ")
-    country_name = country_name.title()
-    category = input("Enter the category like sports,Bollywood,Tech if not sure about category press enter")
-    country_codes = {
-    "Argentina": "ar",
-    "Austria": "at",
-    "Australia": "au",
-    "Belgium": "be",
-    "Brazil": "br",
-    "Bulgaria": "bg",
-    "Canada": "ca",
-    "China": "cn",
-    "Colombia": "co",
-    "Cuba": "cu",
-    "Czech Republic": "cz",
-    "Egypt": "eg",
-    "France": "fr",
-    "Germany": "de",
-    "Greece": "gr",
-    "Hong Kong": "hk",
-    "Hungary": "hu",
-    "India": "in",
-    "Indonesia": "id",
-    "Ireland": "ie",
-    "Israel": "il",
-    "Italy": "it",
-    "Japan": "jp",
-    "Latvia": "lv",
-    "Lithuania": "lt",
-    "Malaysia": "my",
-    "Mexico": "mx",
-    "Morocco": "ma",
-    "Netherlands": "nl",
-    "New Zealand": "nz",
-    "Nigeria": "ng",
-    "Norway": "no",
-    "Philippines": "ph",
-    "Poland": "pl",
-    "Portugal": "pt",
-    "Romania": "ro",
-    "Russia": "ru",
-    "Saudi Arabia": "sa",
-    "Serbia": "rs",
-    "Singapore": "sg",
-    "Slovakia": "sk",
-    "Slovenia": "si",
-    "South Africa": "za",
-    "South Korea": "kr",
-    "Sweden": "se",
-    "Switzerland": "ch",
-    "Taiwan": "tw",
-    "Thailand": "th",
-    "Turkey": "tr",
-    "Ukraine": "ua",
-    "United Arab Emirates": "ae",
-    "United Kingdom": "gb",
-    "United States": "us",
-    "Venezuela": "ve"
-}
-    country_code = country_codes[country_name]
-    articles = headline(country_code,category)
+    category = input("Enter the category like sports,Bollywood,Tech if not sure about category press enter ")
+    articles = headline(category)
     if  articles!=None:
         displaynews(articles)
 if __name__ == '__main__':
